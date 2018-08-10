@@ -3,7 +3,7 @@ $.getJSON("/articles", function(data) {
   // For each one
   for (var i = 0; i < data.length; i++) {
     // Display the apropos information on the page
-    $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
+    $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link +"<br />" + "<button data-id='" + data[i]._id+ "' id='delArt'>Delete Article</button>" + "<button data-id='" + data[i]._id + "' id='saveArt'>Save Article</button>" + "</p>");
   }
 });
 
@@ -31,6 +31,7 @@ $(document).on("click", "p", function() {
       $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
       // A button to submit a new note, with the id of the article saved to it
       $("#notes").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
+      $("#notes").append("<button data-id='" + data._id + "' id='Delete'>Delete Note</button>");
 
       // If there's a note in the article
       if (data.note) {
@@ -80,3 +81,32 @@ $.get("/scrape", function(req, res) {
  
   })
 });
+
+$(document).on("click", "#saveArt", function() {
+  // Grab the id associated with the article from the submit button
+  console.log("hit")
+  var thisId = $(this).attr("data-id");
+  console.log(thisId)
+
+  // Run a POST request to change the note, using what's entered in the inputs
+  $.ajax({
+    method: "POST",
+    url: "/save/" + thisId,
+    data: {
+      saved: true,
+    }
+  })
+  .then(function(data) {
+    // Log the response
+    console.log(data);
+    
+  });
+});  
+
+//was trying to change route path to localhost:3000/saved
+// $("#saved").on("click", function() {
+// $.get("/saved", function(req, res) {
+//     res.sendFile(path.join(__dirname, "saved.html"));
+//   });
+// // Grab the id associated with the article from the submit button
+// });

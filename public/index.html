@@ -1,54 +1,94 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <meta charset="UTF-8">
-    <title>Scraping With Mongoose</title>
-    <style>
-      body { background-color: lightblue }
-      #wrapper {
-        width: auto;
-        margin-left: auto;
-        margin-right: auto;
-        padding-top: 5%;
+
+<head>
+  <meta charset="UTF-8">
+  <title>Scraping With Mongoose</title>
+  <style>
+    body{background-color: firebrick;
+    color: white}
+    p {
+      background-color: red;
+      -webkit-animation: random 15s infinite;
+      animation: random 15s infinite;
+    }
+
+    @keyframes random {
+      15% {
+        background-color: red;
       }
-      #articles {
-        display: inline-block;
-        overflow: auto;
-        width: 60%;
-        height: 700px;
+      30% {
+        background-color: brown;
       }
-      #notes {
-        float: right;
-        width: 30%;
+      45% {
+        background-color: green;
       }
-      textarea, input {
-        display: block;
-        width: 100%;
-        background-color: rgb(66, 165, 211);
+      60% {
+        background-color: black;
       }
-      input {
-        height: 36px;
-        font-size: 24px;
+      75% {
+        background-color: Grey;
       }
-      textarea {
-        height: 200px;
-        font-size: 18px;
-      }
-      button{
-        position: relative;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="wrapper">
-      <h1 style="text-align: center">Note Scraper</h1>
-      <br>
-      <hr>
-      <button id=scrape>Collect Articles</button>
-      <div id="articles"></div>
-      <div id="notes"></div>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="app.js"></script>
-  </body>
+    }
+
+    #wrapper {
+      width: auto;
+      margin-left: auto;
+      margin-right: auto;
+      padding-top: 5%;
+    }
+
+    #articles {
+      display: inline-block;
+      overflow: auto;
+      width: 50%;
+      height: 700px;
+    }
+
+    #notes {
+      float: right;
+      width: 40%;
+    }
+
+    textarea,
+    input {
+      display: block;
+      width: 100%;
+      background-color: rgb(66, 165, 211);
+    }
+
+    input {
+      height: 36px;
+      font-size: 24px;
+    }
+
+    textarea {
+      height: 200px;
+      font-size: 18px;
+    }
+
+    p {
+      border: 5px
+    }
+    h1{
+      font-size: 80px
+    }
+  </style>
+</head>
+
+<body>
+  <div id="wrapper">
+    <h1 style="text-align: center">Note Scraper</h1>
+    <br>
+    <hr>
+    <button id=scrape>Collect Articles</button>
+    <button id=saved>Saved Articles</button>
+    <p style="width:50%">Please click and Stand by for article Collection</p>
+    <div id="articles"></div>
+    <div id="notes"></div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="app.js"></script>
+</body>
+
 </html>
